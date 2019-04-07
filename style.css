@@ -1,0 +1,20 @@
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+#game-board{
+    display: flex;
+    flex-direction: column;
+    border: 2px solid plum;
+    width: 56em;
+}
+.row{
+    display: flex;
+}
+.game-square{
+    width: 8em;
+    height: 8em;
+    border: 2px solid purple;
+    margin: 0;
+}
