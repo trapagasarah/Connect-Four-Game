@@ -29,7 +29,7 @@ let drawBoard = () => {
     }
 }
 let insertPiece = function (column) {
-    let row 
+    let row
     let didPlacePiece = false
     for (let i = 5; i >= 0; i--) {
         if (gameBoard[i][column] === empty && didPlacePiece === false) {
@@ -39,7 +39,7 @@ let insertPiece = function (column) {
         }
     }
     if (didPlacePiece) {
-        if (checkColumnForWinner(column) || checkRowForWinner(row) || checkDiagonalRightForWinner(row, column) || checkDiagonalUpRightForFour(row, column)){
+        if (checkColumnForWinner(column) || checkRowForWinner(row) || checkDiagonalDownRightForWinner(row, column) || checkDiagonalUpRightForFour(row, column)) {
             alert('Winner!!!')
         }
 
@@ -59,64 +59,68 @@ let checkColumnForWinner = function (column) {
     let checkForFour = 0
     for (let i = 0; i < gameBoard.length; i++) {
         let currentSquare = gameBoard[i][column]
-        if (currentSquare === currentPlayer){
+        if (currentSquare === currentPlayer) {
             checkForFour++
         } else {
             checkForFour = 0
         }
-        if (checkForFour === 4){
+        if (checkForFour === 4) {
             didWin = true
-        }  
+        }
     }
     return didWin
 }
-let checkRowForWinner = function(row){
+let checkRowForWinner = function (row) {
     let didWin = false
     let checkForFour = 0
-    for (let i = 0; i < gameBoard.length; i++){
+    for (let i = 0; i < gameBoard[0].length; i++) {
+        console.log(i + ' ' + row)
         let currentSquare = gameBoard[row][i]
-        if (currentSquare === currentPlayer){
+        if (currentSquare === currentPlayer) {
             checkForFour++
         } else {
             checkForFour = 0
         }
-        if (checkForFour === 4){
+        if (checkForFour === 4) {
             didWin = true
         }
     }
     return didWin
 }
-let checkDiagonalRightForWinner = function(row, column){
+let checkDiagonalDownRightForWinner = function (row, column) {
     let didWin = false
     let checkForFour = 0
     let min = row < column ? row : column
-    for (let i = row-min, j = column-min; i < gameBoard.length && j < gameBoard[0].length; i++, j++){
-        
+    for (let i = row - min, j = column - min; i < gameBoard.length && j < gameBoard[0].length; i++ , j++) {
+
         let currentSquare = gameBoard[i][j]
-        if (currentSquare === currentPlayer){
+        if (currentSquare === currentPlayer) {
             checkForFour++
-        }else{
+        } else {
             checkForFour = 0
         }
-        if (checkForFour === 4){
+        if (checkForFour === 4) {
             didWin = true
         }
     }
     return didWin
 }
-let checkDiagonalUpRightForFour = function(row,column){
+let checkDiagonalUpRightForFour = function (row, column) {
     let didWin = false
     let checkForFour = 0
-    let shortestDistance = gameBoard.length - row < column ? gameBoard.length - row : column
-    for (let i = row + shortestDistance - 1, j = column - shortestDistance + 1; i >= 0 && j < gameBoard[0].length; i--, j++){
-        console.log(i + ' ' + j)
+    let distanceToBottom = gameBoard.length - row - 1
+    let distanceToLeft = column
+    let shortestDistance = distanceToBottom < distanceToLeft ? distanceToBottom : distanceToLeft
+    console.log(shortestDistance)
+    for (let i = row + shortestDistance, j = column - shortestDistance; i >= 0 && j < gameBoard[0].length; i-- , j++) {
+        
         let currentSquare = gameBoard[i][j]
-        if (currentSquare === currentPlayer){
+        if (currentSquare === currentPlayer) {
             checkForFour++
         } else {
             checkForFour = 0
         }
-        if (checkForFour === 4){
+        if (checkForFour === 4) {
             didWin = true
         }
     }
