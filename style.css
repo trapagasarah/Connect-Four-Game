@@ -2,19 +2,26 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
+    background-image: url('forest-background.jpg');
 }
 #game-board{
     display: flex;
     flex-direction: column;
-    border: 2px solid plum;
+    border: 3px solid rgb(194, 202, 168);
     width: 56em;
+    background-color: rgba(138, 154, 91, .5)
 }
 .row{
     display: flex;
 }
 .game-square{
-    width: 8em;
-    height: 8em;
-    border: 2px solid purple;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 2em;
+    height: 2em;
+    border: 2px solid rgb(219, 224, 201);
     margin: 0;
+    font-size: 4em;
+
 }
