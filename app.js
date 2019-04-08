@@ -29,24 +29,80 @@ let drawBoard = () => {
     }
 }
 let insertPiece = function (column) {
+    let row 
     let didPlacePiece = false
     for (let i = 5; i >= 0; i--) {
         if (gameBoard[i][column] === empty && didPlacePiece === false) {
             gameBoard[i][column] = currentPlayer
             didPlacePiece = true
+            row = i
         }
     }
-    if (didPlacePiece){
+    if (didPlacePiece) {
+        if (checkColumnForWinner(column) || checkRowForWinner(row) || checkDiagonalRightForWinner(row, column)){
+            alert('Winner!!!')
+        }
+
         changeTurn()
     }
     drawBoard()
 }
-let changeTurn = function() {
-    if (currentPlayer === playerOne){
+let changeTurn = function () {
+    if (currentPlayer === playerOne) {
         currentPlayer = playerTwo
     } else {
         currentPlayer = playerOne
     }
+}
+let checkColumnForWinner = function (column) {
+    let didWin = false
+    let checkForFour = 0
+    for (let i = 0; i < gameBoard.length; i++) {
+        let currentSquare = gameBoard[i][column]
+        if (currentSquare === currentPlayer){
+            checkForFour++
+        } else {
+            checkForFour = 0
+        }
+        if (checkForFour === 4){
+            didWin = true
+        }  
+    }
+    return didWin
+}
+let checkRowForWinner = function(row){
+    let didWin = false
+    let checkForFour = 0
+    for (let i = 0; i < gameBoard.length; i++){
+        let currentSquare = gameBoard[row][i]
+        if (currentSquare === currentPlayer){
+            checkForFour++
+        } else {
+            checkForFour = 0
+        }
+        if (checkForFour === 4){
+            didWin = true
+        }
+    }
+    return didWin
+}
+let checkDiagonalRightForWinner = function(row, column){
+    let didWin = false
+    let checkForFour = 0
+    let min = row < column ? row : column
+    for (let i = row-min, j = column-min; i < gameBoard.length && j < gameBoard[0].length; i++, j++){
+        console.log(i + ' ' + j)
+        let currentSquare = gameBoard[i][j]
+        if (currentSquare === currentPlayer){
+            checkForFour++
+        }else{
+            checkForFour = 0
+        }
+        if (checkForFour === 4){
+            didWin = true
+        }
+    }
+    return didWin
 }
 
 $(function () {
