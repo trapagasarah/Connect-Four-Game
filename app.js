@@ -149,8 +149,8 @@ $(function () {
         $('.cursor').remove()
         let cursor = $(`<div>${currentPlayer}</div>`)
             .addClass('cursor')
-            .css('left', event.clientX)
-            .css('top', event.clientY)
+            .css('left', event.clientX - 30)
+            .css('top', event.clientY - 40)
             $('#game-board').append(cursor)
         console.log(event.clientX + ' ' + event.clientY)
         

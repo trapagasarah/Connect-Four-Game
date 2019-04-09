@@ -19,6 +19,7 @@ h1 {
     border: 3px solid rgb(194, 202, 168);
     width: 56em;
     background-color: rgba(138, 154, 91, .5);
+    cursor: none;
 }
 .row{
     display: flex;
@@ -37,6 +38,7 @@ h1 {
     display: flex;
     position: fixed;
     font-size: 4em;
-    align-items: center;
+    justify-content: center;
     pointer-events: none;
+    
 }
