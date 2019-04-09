@@ -137,11 +137,14 @@ let resetBoard = function () {
     ]
     drawBoard()
 }
+let score = function() { 
+
+}
+
 
 $(function () {
     drawBoard()
-    $('#reset-button').click(function (event) {
-        event.preventDefault()
+    $('#reset-button').click(function () {
         console.log('reset board')
         resetBoard()
     })
@@ -151,11 +154,11 @@ $(function () {
             .addClass('cursor')
             .css('left', event.clientX - 30)
             .css('top', event.clientY - 40)
-            $('#game-board').append(cursor)
+        $('#game-board').append(cursor)
     })
-    $('#game-board').mouseleave(function(){
+    $('#game-board').mouseleave(function () {
         $('.cursor').remove()
     })
-
+    
 })
 
