@@ -148,7 +148,7 @@ let score = function () {
     } else {
         playerTwoScore++
     }
-    $('.player1-score').html(playerOneScore)
+    $('.player1-score').html('Score: ' + playerOneScore)
     $('.player2-score').html(playerTwoScore)
 }
 

@@ -5,9 +5,9 @@ body {
     flex-direction: column;
     background-image: url('forest-background.jpg');
     margin: 8px 0;
+    font-family: 'Oxygen', sans-serif;
 }
 h1 {
-    font-family: 'Oxygen', sans-serif;
     font-size: 6em;
     margin: 0;
     color: rgb(111, 124, 73);
@@ -16,30 +16,45 @@ h1 {
 }
 .game-container{
     display: flex; 
-    justify-content: space-between;
+    justify-content: space-evenly;
     width: 100vw;
 }
 
 .score1{
     display: flex;
     width: 18%;
-    justify-content: center;
+    height: 6em;
+    align-items: center;
+    flex-direction: column;
+    background-color: rgba(58, 43, 40, .5);
+    border-radius: .5em;
 }
 
 .score2{
     display: flex;
     width: 18%;
-    justify-content: center;   
+    height: 6em;
+    align-items: center; 
+    flex-direction: column; 
+    background-color: rgba(58, 43, 40, .5);
+    border-radius: .5em; 
 }
 
 h2 {
-    font-family: 'Oxygen', sans-serif;
-    font-size: 3em;
+    
+    font-size: 2.5em;
     margin: 0;
     font-weight: 700;
     color:rgb(194, 202, 168);
-    -webkit-text-stroke: 2px  rgb(93, 69, 63);
+    -webkit-text-stroke: 1px  rgb(58, 43, 40);
     text-decoration: underline;
+}
+h3 {
+    font-size: 2em;
+    font-weight: 700;
+    margin: 0;
+    color: rgb(194, 202, 168);
+    -webkit-text-stroke: 1px  rgb(58, 43, 40);
 }
 #game-board{
     display: flex;
