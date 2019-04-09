@@ -42,9 +42,9 @@ let insertPiece = function (column) {
         if (checkColumnForWinner(column) || checkRowForWinner(row) || checkDiagonalDownRightForWinner(row, column) || checkDiagonalUpRightForFour(row, column)) {
             alert('Winner!!!')
             score()
-            console.log(playerOneScore + " " + PlayerTwoScore)
-        }
+            console.log(playerOneScore + ' ' + playerTwoScore)
 
+        }
         changeTurn()
     }
     drawBoard()
@@ -141,18 +141,20 @@ let resetBoard = function () {
 }
 
 let playerOneScore = 0
-let PlayerTwoScore = 0
+let playerTwoScore = 0
 let score = function () {
     if (currentPlayer === playerOne) {
         playerOneScore++
     } else {
-        PlayerTwoScore++
+        playerTwoScore++
     }
+    $('.player1-score').html(playerOneScore)
+    $('.player2-score').html(playerTwoScore)
 }
-
 
 $(function () {
     drawBoard()
+    
     $('#reset-button').click(function () {
         console.log('reset board')
         resetBoard()
@@ -167,6 +169,7 @@ $(function () {
     })
     $('#game-board').mouseleave(function () {
         $('.cursor').remove()
+        
     })
 
 })
