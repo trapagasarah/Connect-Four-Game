@@ -149,7 +149,7 @@ let score = function () {
         playerTwoScore++
     }
     $('.player1-score').html('Score: ' + playerOneScore)
-    $('.player2-score').html(playerTwoScore)
+    $('.player2-score').html('Score: ' + playerTwoScore)
 }
 
 $(function () {
