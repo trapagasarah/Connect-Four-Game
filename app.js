@@ -30,6 +30,7 @@ let drawBoard = () => {
 let insertPiece = function (column) {
     let row
     let didPlacePiece = false
+
     for (let i = 5; i >= 0; i--) {
         if (gameBoard[i][column] === empty && didPlacePiece === false) {
             gameBoard[i][column] = currentPlayer
@@ -40,7 +41,8 @@ let insertPiece = function (column) {
     if (didPlacePiece) {
         if (checkColumnForWinner(column) || checkRowForWinner(row) || checkDiagonalDownRightForWinner(row, column) || checkDiagonalUpRightForFour(row, column)) {
             alert('Winner!!!')
-
+            score()
+            console.log(playerOneScore + " " + PlayerTwoScore)
         }
 
         changeTurn()
@@ -137,8 +139,15 @@ let resetBoard = function () {
     ]
     drawBoard()
 }
-let score = function() { 
 
+let playerOneScore = 0
+let PlayerTwoScore = 0
+let score = function () {
+    if (currentPlayer === playerOne) {
+        playerOneScore++
+    } else {
+        PlayerTwoScore++
+    }
 }
 
 
@@ -159,6 +168,6 @@ $(function () {
     $('#game-board').mouseleave(function () {
         $('.cursor').remove()
     })
-    
+
 })
 

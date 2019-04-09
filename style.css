@@ -34,11 +34,11 @@ h1 {
 
 h2 {
     font-family: 'Oxygen', sans-serif;
-    font-size: 2.5em;
+    font-size: 3em;
     margin: 0;
     font-weight: 700;
-    color: rgb(223, 230, 203);
-    -webkit-text-stroke: 2px rgb(111, 124, 73);
+    color:rgb(194, 202, 168);
+    -webkit-text-stroke: 2px  rgb(93, 69, 63);
     text-decoration: underline;
 }
 #game-board{
