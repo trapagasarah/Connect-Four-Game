@@ -33,3 +33,10 @@ h1 {
     margin: 0;
     font-size: 4em;
 }
+.cursor {
+    display: flex;
+    position: fixed;
+    font-size: 4em;
+    align-items: center;
+    pointer-events: none;
+}

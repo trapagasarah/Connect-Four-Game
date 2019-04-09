@@ -19,7 +19,6 @@ let drawBoard = () => {
         for (let j = 0; j < gameBoard[i].length; j++) {
             let gameSquare = $(`<div>${gameBoard[i][j]}</div>`)
             gameSquare.addClass('game-square')
-
             gameSquare.click(function () {
                 insertPiece(j)
             })
@@ -41,6 +40,7 @@ let insertPiece = function (column) {
     if (didPlacePiece) {
         if (checkColumnForWinner(column) || checkRowForWinner(row) || checkDiagonalDownRightForWinner(row, column) || checkDiagonalUpRightForFour(row, column)) {
             alert('Winner!!!')
+
         }
 
         changeTurn()
@@ -74,7 +74,6 @@ let checkRowForWinner = function (row) {
     let didWin = false
     let checkForFour = 0
     for (let i = 0; i < gameBoard[0].length; i++) {
-        console.log(i + ' ' + row)
         let currentSquare = gameBoard[row][i]
         if (currentSquare === currentPlayer) {
             checkForFour++
@@ -113,7 +112,7 @@ let checkDiagonalUpRightForFour = function (row, column) {
     let shortestDistance = distanceToBottom < distanceToLeft ? distanceToBottom : distanceToLeft
     console.log(shortestDistance)
     for (let i = row + shortestDistance, j = column - shortestDistance; i >= 0 && j < gameBoard[0].length; i-- , j++) {
-        
+
         let currentSquare = gameBoard[i][j]
         if (currentSquare === currentPlayer) {
             checkForFour++
@@ -127,8 +126,35 @@ let checkDiagonalUpRightForFour = function (row, column) {
     return didWin
 }
 
+let resetBoard = function () {
+    gameBoard = [
+        [empty, empty, empty, empty, empty, empty, empty],
+        [empty, empty, empty, empty, empty, empty, empty],
+        [empty, empty, empty, empty, empty, empty, empty],
+        [empty, empty, empty, empty, empty, empty, empty],
+        [empty, empty, empty, empty, empty, empty, empty],
+        [empty, empty, empty, empty, empty, empty, empty],
+    ]
+    drawBoard()
+}
+
 $(function () {
     drawBoard()
-
+    $('#reset-button').click(function (event) {
+        event.preventDefault()
+        console.log('reset board')
+        resetBoard()
+    })
+    $('#game-board').mousemove(function (event) {
+        $('.cursor').remove()
+        let cursor = $(`<div>${currentPlayer}</div>`)
+            .addClass('cursor')
+            .css('left', event.clientX)
+            .css('top', event.clientY)
+            $('#game-board').append(cursor)
+        console.log(event.clientX + ' ' + event.clientY)
+        
+    })
 
 })
+
