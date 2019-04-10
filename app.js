@@ -1,7 +1,37 @@
 const empty = ''
-const playerOne = '🦊'
-const playerTwo = '🐻'
+let playerOne = ''
+let playerTwo = ''
 let currentPlayer = playerOne
+
+let tokenChoices = ['🐱', '🐰', '🦊', '🐻', '🦉', '🐺', '🦇', '🦄', '🐝', '🐛', '🦋', '🐞', '🐜', '🐍', '🦎', '🦝', '🐿', '🦔', '🍀', '🍄']
+let tokenSelection = function () {
+    for (let i = 0; i < tokenChoices.length; i++) {
+        let tokenSquare1 = $(`<div>${tokenChoices[i]}</div>`)
+        let tokenSquare2 = $(`<div>${tokenChoices[i]}</div>`)
+        tokenSquare1.addClass('token-square')
+        tokenSquare2.addClass('token-square')
+        tokenSquare1.click(function () {
+            playerOne = tokenChoices[i]
+            onAnimalClick(playerOne,'#selected-token1')
+        })
+        tokenSquare2.click(function () {
+            playerTwo = tokenChoices[i]
+            onAnimalClick(playerTwo,'#selected-token2')
+        })
+        $('#player1-token').append(tokenSquare1)
+        $('#player2-token').append(tokenSquare2)
+    }
+}
+let onAnimalClick = function (player, divClass) {
+    $(divClass).html(player)
+    if (playerOne !== '' && playerTwo !== '') {
+        currentPlayer = playerOne
+        drawBoard()
+        $('#player1-token').remove()
+        $('#player2-token').remove()
+
+    }
+}
 
 let gameBoard = [
     [empty, empty, empty, empty, empty, empty, empty],
@@ -11,6 +41,7 @@ let gameBoard = [
     [empty, empty, empty, empty, empty, empty, empty],
     [empty, empty, empty, empty, empty, empty, empty],
 ]
+
 let drawBoard = () => {
     $('#game-board').html('')
     for (let i = 0; i < gameBoard.length; i++) {
@@ -153,20 +184,13 @@ let score = function () {
     $('.player2-score').html('Score: ' + playerTwoScore)
 }
 
-let tokenChoices = ['🐱', '🐰', '🦊', '🐻', '🦉', '🐺', '🦇', '🦄', '🐝', '🐛', '🦋', '🐞', '🐜', '🐍', '🦎', '🦝', '🐿', '🦔', '🍀', '🍄']
-let selectToken = function(){
-    for (let i = 0; i < tokenChoices.length; i++){
-        let tokenSquare = $(`<div>${tokenChoices[i]}</div>`)
-        tokenSquare.addClass('token-square')
-        console.log(tokenChoices[i])
-        $('.tokens').append(tokenSquare)
-    }
-    
-}
+
+
+
 
 $(function () {
-    drawBoard()
-    selectToken()
+    tokenSelection()
+    //drawBoard()
     $('#reset-button').click(function () {
         console.log('reset board')
         resetBoard()
@@ -181,7 +205,7 @@ $(function () {
     })
     $('#game-board').mouseleave(function () {
         $('.cursor').remove()
-        
+
     })
 
 })
