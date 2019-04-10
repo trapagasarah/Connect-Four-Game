@@ -27,6 +27,8 @@ let drawBoard = () => {
         $('#game-board').append(row)
     }
 }
+
+
 let insertPiece = function (column) {
     let row
     let didPlacePiece = false
@@ -151,9 +153,20 @@ let score = function () {
     $('.player2-score').html('Score: ' + playerTwoScore)
 }
 
+let tokenChoices = ['🐱', '🐰', '🦊', '🐻', '🦉', '🐺', '🦇', '🦄', '🐝', '🐛', '🦋', '🐞', '🐜', '🐍', '🦎', '🦝', '🐿', '🦔', '🍀', '🍄']
+let selectToken = function(){
+    for (let i = 0; i < tokenChoices.length; i++){
+        let tokenSquare = $(`<div>${tokenChoices[i]}</div>`)
+        tokenSquare.addClass('token-square')
+        console.log(tokenChoices[i])
+        $('.tokens').append(tokenSquare)
+    }
+    
+}
+
 $(function () {
     drawBoard()
-    
+    selectToken()
     $('#reset-button').click(function () {
         console.log('reset board')
         resetBoard()
