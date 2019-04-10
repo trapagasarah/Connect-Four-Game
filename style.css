@@ -23,13 +23,20 @@ h1 {
 .player-info{
     display: flex;
     width: 20%;
-    height: 6em;
     align-items: center;
     flex-direction: column;
-    background-color: rgba(58, 43, 40, .5);
+    justify-content: space-evenly;
     border-radius: .5em;
-    margin-top: 1em;
-    
+    //*margin-top: 1em;*/ 
+}
+.player-score{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-radius: .5em;
+    width: 100%;
+    height: 6em;
+    background-color: rgba(58, 43, 40, .5);
 }
 
 h2 {
@@ -87,6 +94,10 @@ h3 {
     background-color: rgba(58, 43, 40, .6);
     color: rgb(194, 202, 168);
 }
+.selected-token{
+    width: 100%;
+    height: 10em;
+}
 .tokens{
     display: flex;
     flex-wrap: wrap;
@@ -95,6 +106,7 @@ h3 {
     background-color: rgba(194, 202, 168, .3); 
     border-radius: .5em;
     align-content: flex-end;
+    
 }
 .token-square{
     display: flex;
