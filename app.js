@@ -40,10 +40,9 @@ let insertPiece = function (column) {
     }
     if (didPlacePiece) {
         if (checkColumnForWinner(column) || checkRowForWinner(row) || checkDiagonalDownRightForWinner(row, column) || checkDiagonalUpRightForFour(row, column)) {
-            alert('Winner!!!')
+            let loser = currentPlayer === playerOne ? playerTwo : playerOne
+            alert(`${currentPlayer} wins!! \n Sorry ${loser} try again!!`)
             score()
-            console.log(playerOneScore + ' ' + playerTwoScore)
-
         }
         changeTurn()
     }
@@ -75,8 +74,8 @@ let checkColumnForWinner = function (column) {
 let checkRowForWinner = function (row) {
     let didWin = false
     let checkForFour = 0
-    for (let i = 0; i < gameBoard[0].length; i++) {
-        let currentSquare = gameBoard[row][i]
+    for (let j = 0; j < gameBoard[0].length; j++) {
+        let currentSquare = gameBoard[row][j]
         if (currentSquare === currentPlayer) {
             checkForFour++
         } else {
