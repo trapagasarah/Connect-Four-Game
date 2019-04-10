@@ -62,7 +62,7 @@ h3 {
     display: flex;
     flex-direction: column;
     border: 3px solid rgb(194, 202, 168);
-    width: 62%;
+    width: 45%;
     background-color: rgba(138, 154, 91, .5);
     cursor: none;
 }
@@ -73,8 +73,8 @@ h3 {
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 2em;
-    height: 2em;
+    width: 1.5em;
+    height: 1.5em;
     border: 2px solid rgb(219, 224, 201);
     margin: 0;
     font-size: 4em;
