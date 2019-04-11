@@ -11,12 +11,20 @@ let tokenSelection = function () {
         tokenSquare1.addClass('token-square')
         tokenSquare2.addClass('token-square')
         tokenSquare1.click(function () {
-            playerOne = tokenChoices[i]
-            onAnimalClick(playerOne,'#selected-token1')
+            if (tokenChoices[i] !== playerTwo) {
+                playerOne = tokenChoices[i]
+                onAnimalClick(playerOne, '#selected-token1')
+            } else {
+                alert('Whoops, same choice!! Pick again!')
+            }
         })
         tokenSquare2.click(function () {
-            playerTwo = tokenChoices[i]
-            onAnimalClick(playerTwo,'#selected-token2')
+            if (tokenChoices[i] !== playerOne) {
+                playerTwo = tokenChoices[i]
+                onAnimalClick(playerTwo, '#selected-token2')
+            } else {
+                alert('Whoops, same choice!! Pick again!')
+            }
         })
         $('#player1-token').append(tokenSquare1)
         $('#player2-token').append(tokenSquare2)
