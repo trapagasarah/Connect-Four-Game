@@ -14,28 +14,34 @@
 
 <body>
     <h1>Connect Forest</h1>
-    <div class="game-container">
-        <div class="player-info">
+    <main class="game-container">
+        <section class="player-info">
             <div class="player-score">
                 <h2>Player One</h2>
                 <h3 class="player1-score">Score: 0</h3>
             </div>
             <div id="selected-token1" class=selected-token>Pick an Animal</div>
             <div id="player1-token" class="tokens"></div>
-        </div>
-        <div id="game-board">
-        </div>
-        <div class="player-info">
+        </section>
+        <section id="game-board">
+        </section>
+        <section class="player-info">
             <div class="player-score">
                 <h2>Player Two</h2>
                 <h3 class="player2-score">Score: 0</h3>
             </div>
             <div id="selected-token2" class="selected-token">Pick an Animal</div>
             <div id="player2-token" class="tokens"></div>
-        </div>
-
-    </div>
+        </section>
+    </main>
     <button id=reset-button>Reset</button>
+    <div id="winner-loser" class="modal">
+        <p></p>
+    </div>
+    <div id="same-animal" class="modal">
+        <p>Whoops, same choice!! Pick again!</p>
+        <button>Close</button>
+    </div>
 </body>
 
 </html>

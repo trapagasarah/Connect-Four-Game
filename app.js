@@ -2,44 +2,10 @@ const empty = ''
 let playerOne = ''
 let playerTwo = ''
 let currentPlayer = playerOne
+let tokenChoices = ['🐱', '🐰', '🦊', '🐻', '🦉', '🐺', '🦇', '🦄', '🐝', '🐛', '🦋', '🐞', '🐜', '🐍', '🦎', '🦝', '🐿', '🦔', '🍄', '🤖']
+let playerOneScore = 0
+let playerTwoScore = 0
 
-let tokenChoices = ['🐱', '🐰', '🦊', '🐻', '🦉', '🐺', '🦇', '🦄', '🐝', '🐛', '🦋', '🐞', '🐜', '🐍', '🦎', '🦝', '🐿', '🦔', '🍀', '🍄']
-let tokenSelection = function () {
-    for (let i = 0; i < tokenChoices.length; i++) {
-        let tokenSquare1 = $(`<div>${tokenChoices[i]}</div>`)
-        let tokenSquare2 = $(`<div>${tokenChoices[i]}</div>`)
-        tokenSquare1.addClass('token-square')
-        tokenSquare2.addClass('token-square')
-        tokenSquare1.click(function () {
-            if (tokenChoices[i] !== playerTwo) {
-                playerOne = tokenChoices[i]
-                onAnimalClick(playerOne, '#selected-token1')
-            } else {
-                alert('Whoops, same choice!! Pick again!')
-            }
-        })
-        tokenSquare2.click(function () {
-            if (tokenChoices[i] !== playerOne) {
-                playerTwo = tokenChoices[i]
-                onAnimalClick(playerTwo, '#selected-token2')
-            } else {
-                alert('Whoops, same choice!! Pick again!')
-            }
-        })
-        $('#player1-token').append(tokenSquare1)
-        $('#player2-token').append(tokenSquare2)
-    }
-}
-let onAnimalClick = function (player, divClass) {
-    $(divClass).html(player)
-    if (playerOne !== '' && playerTwo !== '') {
-        currentPlayer = playerOne
-        drawBoard()
-        $('#player1-token').remove()
-        $('#player2-token').remove()
-
-    }
-}
 
 let gameBoard = [
     [empty, empty, empty, empty, empty, empty, empty],
@@ -49,6 +15,7 @@ let gameBoard = [
     [empty, empty, empty, empty, empty, empty, empty],
     [empty, empty, empty, empty, empty, empty, empty],
 ]
+
 
 let drawBoard = () => {
     $('#game-board').html('')
@@ -65,6 +32,19 @@ let drawBoard = () => {
         }
         $('#game-board').append(row)
     }
+}
+
+
+let resetBoard = function () {
+    gameBoard = [
+        [empty, empty, empty, empty, empty, empty, empty],
+        [empty, empty, empty, empty, empty, empty, empty],
+        [empty, empty, empty, empty, empty, empty, empty],
+        [empty, empty, empty, empty, empty, empty, empty],
+        [empty, empty, empty, empty, empty, empty, empty],
+        [empty, empty, empty, empty, empty, empty, empty],
+    ]
+    drawBoard()
 }
 
 
@@ -86,9 +66,19 @@ let insertPiece = function (column) {
             score()
         }
         changeTurn()
+        if (currentPlayer === '🤖'){
+            playRobotTurn()
+        }
     }
     drawBoard()
 }
+
+
+let playRobotTurn = function () {
+    insertPiece(Math.floor(Math.random()*7))
+}
+
+
 let changeTurn = function () {
     if (currentPlayer === playerOne) {
         currentPlayer = playerTwo
@@ -96,6 +86,8 @@ let changeTurn = function () {
         currentPlayer = playerOne
     }
 }
+
+
 let checkColumnForWinner = function (column) {
     let didWin = false
     let checkForFour = 0
@@ -112,6 +104,8 @@ let checkColumnForWinner = function (column) {
     }
     return didWin
 }
+
+
 let checkRowForWinner = function (row) {
     let didWin = false
     let checkForFour = 0
@@ -128,6 +122,8 @@ let checkRowForWinner = function (row) {
     }
     return didWin
 }
+
+
 let checkDiagonalDownRightForWinner = function (row, column) {
     let didWin = false
     let checkForFour = 0
@@ -146,6 +142,8 @@ let checkDiagonalDownRightForWinner = function (row, column) {
     }
     return didWin
 }
+
+
 let checkDiagonalUpRightForFour = function (row, column) {
     let didWin = false
     let checkForFour = 0
@@ -168,20 +166,52 @@ let checkDiagonalUpRightForFour = function (row, column) {
     return didWin
 }
 
-let resetBoard = function () {
-    gameBoard = [
-        [empty, empty, empty, empty, empty, empty, empty],
-        [empty, empty, empty, empty, empty, empty, empty],
-        [empty, empty, empty, empty, empty, empty, empty],
-        [empty, empty, empty, empty, empty, empty, empty],
-        [empty, empty, empty, empty, empty, empty, empty],
-        [empty, empty, empty, empty, empty, empty, empty],
-    ]
-    drawBoard()
+
+let tokenSelection = function () {
+    for (let i = 0; i < tokenChoices.length; i++) {
+        let tokenSquare1 = $(`<div>${tokenChoices[i]}</div>`)
+        let tokenSquare2 = $(`<div>${tokenChoices[i]}</div>`)
+        tokenSquare1.addClass('token-square')
+        tokenSquare2.addClass('token-square')
+        tokenSquare1.click(function () {
+            if (tokenChoices[i] !== playerTwo) {
+                playerOne = tokenChoices[i]
+                onAnimalClick(playerOne, '#selected-token1')
+            } else {
+                $('#same-animal').show()
+                $('button').click(function(){
+                    $('.modal').hide()
+                })
+            }
+        })
+        tokenSquare2.click(function () {
+            if (tokenChoices[i] !== playerOne) {
+                playerTwo = tokenChoices[i]
+                onAnimalClick(playerTwo, '#selected-token2')
+            } else {
+                alert('Whoops, same choice!! Pick again!')
+            }
+        })
+        $('#player1-token').append(tokenSquare1)
+        $('#player2-token').append(tokenSquare2)
+    }
 }
 
-let playerOneScore = 0
-let playerTwoScore = 0
+
+let onAnimalClick = function (player, divClass) {
+    $(divClass).html(player)
+    if (playerOne !== '' && playerTwo !== '') {
+        currentPlayer = playerOne
+        drawBoard()
+        $('#player1-token').remove()
+        $('#player2-token').remove()
+        if (currentPlayer === '🤖'){
+            playRobotTurn()
+        }
+    }
+}
+
+
 let score = function () {
     if (currentPlayer === playerOne) {
         playerOneScore++
@@ -193,12 +223,9 @@ let score = function () {
 }
 
 
-
-
-
 $(function () {
     tokenSelection()
-    //drawBoard()
+    
     $('#reset-button').click(function () {
         console.log('reset board')
         resetBoard()

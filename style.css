@@ -85,14 +85,13 @@ h3 {
     pointer-events: none;
     
 }
-#reset-button{
-    width: 4em;
-    height: 2em;
-    margin: 1em 0;
-    font-size: 1.5em;
+button{
+    
+    
+    font-size: 1em;
     border-radius: .5em;
-    background-color: rgba(58, 43, 40, .6);
-    color: rgb(194, 202, 168);
+    background-color: rgb(194, 202, 168);
+    color: rgb(58, 43, 40);
 }
 .selected-token{
     width: 100%;
@@ -125,4 +124,20 @@ h3 {
     -webkit-text-stroke: 1px white;
     font-weight: 700;
     line-height: 1em;
+}
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    margin: 0 auto;
+    width: 20%;
+    height: 20%;
+    background-color: rgba(58, 43, 40, .7);
+    border-radius: .6em;
+    text-align: center;
+}
+p{
+    color: white;
+    font-size: 1.5em;
+    text-align: center;
 }
