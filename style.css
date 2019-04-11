@@ -26,10 +26,8 @@ h1 {
     width: 20%;
     align-items: center;
     flex-direction: column;
-    
     border-radius: .5em;
     margin: 0 4em;
-   
 }
 .player-score{
     display: flex;
@@ -43,7 +41,6 @@ h1 {
 }
 
 h2 {
-    
     font-size: 2.5em;
     margin: 0;
     font-weight: 700;
@@ -87,8 +84,6 @@ h3 {
     
 }
 button{
-    
-    
     font-size: 1em;
     border-radius: .5em;
     background-color: rgb(194, 202, 168);
