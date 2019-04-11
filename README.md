@@ -3,13 +3,14 @@
 
 ![Image](images/wireframe.jpg?raw=true)
 ![Image](images/initial-whiteboarding.jpg)
-![Image]()
-![Image]()
-![Image]()
-![Image]()
-![Image]()
-![Image]()
-![Image]()
+![Image](images/creating-board.jpg)
+![Image](images/placing-piece.jpg)
+![Image](images/check-row.jpg)
+![Image](images/check-column.jpg)
+![Image](images/diagonal-down-right-algorithm.jpg)
+![Image](images/diagonal-right.jpg)
+![Image](images/diagonal-up-right-algorithm.jpg)
+![Image](images/diagonal-up-right.jpg)
 
 
 
