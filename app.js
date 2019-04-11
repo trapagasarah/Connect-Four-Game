@@ -62,11 +62,12 @@ let insertPiece = function (column) {
     if (didPlacePiece) {
         if (checkColumnForWinner(column) || checkRowForWinner(row) || checkDiagonalDownRightForWinner(row, column) || checkDiagonalUpRightForFour(row, column)) {
             let loser = currentPlayer === playerOne ? playerTwo : playerOne
-            alert(`${currentPlayer} wins!! \n Sorry ${loser} try again!!`)
+            $('#winner-loser p').html(`${currentPlayer} wins!! \n Sorry ${loser} try again!!`)
+            $('#winner-loser').show()
             score()
         }
         changeTurn()
-        if (currentPlayer === '🤖'){
+        if (currentPlayer === '🤖') {
             playRobotTurn()
         }
     }
@@ -75,7 +76,7 @@ let insertPiece = function (column) {
 
 
 let playRobotTurn = function () {
-    insertPiece(Math.floor(Math.random()*7))
+    insertPiece(Math.floor(Math.random() * 7))
 }
 
 
@@ -179,9 +180,7 @@ let tokenSelection = function () {
                 onAnimalClick(playerOne, '#selected-token1')
             } else {
                 $('#same-animal').show()
-                $('button').click(function(){
-                    $('.modal').hide()
-                })
+
             }
         })
         tokenSquare2.click(function () {
@@ -189,7 +188,8 @@ let tokenSelection = function () {
                 playerTwo = tokenChoices[i]
                 onAnimalClick(playerTwo, '#selected-token2')
             } else {
-                alert('Whoops, same choice!! Pick again!')
+                $('#same-animal').show()
+
             }
         })
         $('#player1-token').append(tokenSquare1)
@@ -205,7 +205,7 @@ let onAnimalClick = function (player, divClass) {
         drawBoard()
         $('#player1-token').remove()
         $('#player2-token').remove()
-        if (currentPlayer === '🤖'){
+        if (currentPlayer === '🤖') {
             playRobotTurn()
         }
     }
@@ -225,7 +225,9 @@ let score = function () {
 
 $(function () {
     tokenSelection()
-    
+    $('button').click(function () {
+        $('.modal').hide()
+    })
     $('#reset-button').click(function () {
         console.log('reset board')
         resetBoard()
