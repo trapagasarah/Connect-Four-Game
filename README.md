@@ -1,4 +1,9 @@
-https://trapagasarah.github.io/Connect-Four-Game/
+[Deployed App](https://trapagasarah.github.io/Connect-Four-Game/)
+[Project Board](https://trello.com/b/05G4jwI1/connect-forest)
+
+![Image]('images/wireframe.jpg')
+
+
 
 ## Welcome to GitHub Pages
 
