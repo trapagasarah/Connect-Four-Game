@@ -2,6 +2,15 @@
 [Project Board](https://trello.com/b/05G4jwI1/connect-forest)
 
 ![Image](images/wireframe.jpg?raw=true)
+![Image](images/initial-whiteboarding.jpg)
+![Image]()
+![Image]()
+![Image]()
+![Image]()
+![Image]()
+![Image]()
+![Image]()
+
 
 
 
