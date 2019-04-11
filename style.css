@@ -18,6 +18,7 @@ h1 {
     display: flex; 
     justify-content: center;
     width: 100vw;
+    margin-bottom: 3em;
 }
 
 .player-info{
@@ -132,7 +133,7 @@ button{
     margin: 0 auto;
     width: 20%;
     height: 20%;
-    background-color: rgba(58, 43, 40, .7);
+    background-color: rgba(58, 43, 40, .8);
     border-radius: .6em;
     text-align: center;
 }
