@@ -65,6 +65,7 @@ h3 {
 .row{
     display: flex;
 }
+
 .game-square{
     display: flex;
     align-items: center;
