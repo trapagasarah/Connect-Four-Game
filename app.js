@@ -5,6 +5,7 @@ let currentPlayer = playerOne
 let tokenChoices = ['🐱', '🐰', '🦊', '🐻', '🦉', '🐺', '🦇', '🦄', '🐝', '🐛', '🦋', '🐞', '🐜', '🐍', '🦎', '🦝', '🐿', '🦔', '🍄', '🤖']
 let playerOneScore = 0
 let playerTwoScore = 0
+let numberOfTurns = 0
 
 
 let gameBoard = [
@@ -51,7 +52,6 @@ let resetBoard = function () {
 let insertPiece = function (column) {
     let row
     let didPlacePiece = false
-
     for (let i = 5; i >= 0; i--) {
         if (gameBoard[i][column] === empty && didPlacePiece === false) {
             gameBoard[i][column] = currentPlayer
@@ -69,6 +69,10 @@ let insertPiece = function (column) {
         changeTurn()
         if (currentPlayer === '🤖') {
             playRobotTurn()
+        }
+        numberOfTurns++
+        if (numberOfTurns === 42){
+            $('#tie-modal').show()
         }
     }
     drawBoard()
