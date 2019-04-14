@@ -73,6 +73,7 @@ let insertPiece = function (column) {
         numberOfTurns++
         if (numberOfTurns === 42){
             $('#tie-modal').show()
+            resetBoard()
         }
     }
     drawBoard()
