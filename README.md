@@ -13,7 +13,7 @@
 ![Image](images/placing-piece.jpg)
 ![Image](images/check-row.jpg)
 ![Image](images/check-column.jpg)
-![Image](images/diagonal-down-right-algorithm.jpg)
+![Image](images/Diagonal-down-right-algorithm.jpg)
 ![Image](images/diagonal-right.jpg)
 ![Image](images/diagonal-up-right-algorithm.jpg)
 ![Image](images/diagonal-up-right.jpg)
