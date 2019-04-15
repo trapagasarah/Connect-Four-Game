@@ -136,7 +136,6 @@ let checkDiagonalDownRightForWinner = function (row, column) {
     let checkForFour = 0
     let min = row < column ? row : column
     for (let i = row - min, j = column - min; i < gameBoard.length && j < gameBoard[0].length; i++ , j++) {
-
         let currentSquare = gameBoard[i][j]
         if (currentSquare === currentPlayer) {
             checkForFour++
@@ -157,9 +156,7 @@ let checkDiagonalUpRightForFour = function (row, column) {
     let distanceToBottom = gameBoard.length - row - 1
     let distanceToLeft = column
     let shortestDistance = distanceToBottom < distanceToLeft ? distanceToBottom : distanceToLeft
-    console.log(shortestDistance)
     for (let i = row + shortestDistance, j = column - shortestDistance; i >= 0 && j < gameBoard[0].length; i-- , j++) {
-
         let currentSquare = gameBoard[i][j]
         if (currentSquare === currentPlayer) {
             checkForFour++
@@ -183,7 +180,7 @@ let tokenSelection = function () {
         tokenSquare1.click(function () {
             if (tokenChoices[i] !== playerTwo) {
                 playerOne = tokenChoices[i]
-                onAnimalClick(playerOne, '#selected-token1')
+                startGameIfPlayersHavePicked(playerOne, '#selected-token1')
             } else {
                 $('#same-animal').show()
 
@@ -192,7 +189,7 @@ let tokenSelection = function () {
         tokenSquare2.click(function () {
             if (tokenChoices[i] !== playerOne) {
                 playerTwo = tokenChoices[i]
-                onAnimalClick(playerTwo, '#selected-token2')
+                startGameIfPlayersHavePicked(playerTwo, '#selected-token2')
             } else {
                 $('#same-animal').show()
 
@@ -204,7 +201,7 @@ let tokenSelection = function () {
 }
 
 
-let onAnimalClick = function (player, divClass) {
+let startGameIfPlayersHavePicked = function (player, divClass) {
     $(divClass).html(player)
     if (playerOne !== '' && playerTwo !== '') {
         currentPlayer = playerOne
