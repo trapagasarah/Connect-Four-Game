@@ -37,6 +37,7 @@ let drawBoard = () => {
 
 
 let resetBoard = function () {
+    numberOfTurns = 0
     gameBoard = [
         [empty, empty, empty, empty, empty, empty, empty],
         [empty, empty, empty, empty, empty, empty, empty],
@@ -67,14 +68,14 @@ let insertPiece = function (column) {
             score()
         }
         changeTurn()
-        if (currentPlayer === '🤖') {
-            playRobotTurn()
-        }
         numberOfTurns++
-        if (numberOfTurns === 42){
+        if (numberOfTurns === 42) {
             $('#tie-modal').show()
             resetBoard()
         }
+    }
+    if (currentPlayer === '🤖') {
+        playRobotTurn()
     }
     drawBoard()
 }
